@@ -1,0 +1,812 @@
+options:
+  parameters:
+    author: vinam
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: lab8_task6
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Lab 8 Task 6
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 4.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: const_points
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [664, 72.0]
+    rotation: 0
+    state: enabled
+- name: excess_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: '0.4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 72.0]
+    rotation: 0
+    state: enabled
+- name: nfilts
+  id: variable
+  parameters:
+    comment: ''
+    value: '32'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 72.0]
+    rotation: 0
+    state: enabled
+- name: ntaps
+  id: variable
+  parameters:
+    comment: ''
+    value: 11*nfilts*sps
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 72.0]
+    rotation: 0
+    state: enabled
+- name: rx_taps
+  id: variable
+  parameters:
+    comment: ''
+    value: firdes.root_raised_cosine(nfilts, nfilts, 1.0, excess_bw, ntaps)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [960, 8.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: 5e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [568, 8.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate_2
+  id: variable
+  parameters:
+    comment: ''
+    value: '20000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [664, 8.0]
+    rotation: 0
+    state: enabled
+- name: sps
+  id: variable
+  parameters:
+    comment: ''
+    value: '4'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [776, 8.0]
+    rotation: 0
+    state: enabled
+- name: timing_bw
+  id: variable
+  parameters:
+    comment: ''
+    value: 2*pi/100
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 8.0]
+    rotation: 0
+    state: enabled
+- name: tx_taps
+  id: variable
+  parameters:
+    comment: ''
+    value: firdes.root_raised_cosine(nfilts, nfilts, 1.0, excess_bw, ntaps)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 72.0]
+    rotation: 0
+    state: enabled
+- name: analog_random_source_x_0
+  id: analog_random_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    max: '8'
+    maxoutbuf: '0'
+    min: '0'
+    minoutbuf: '0'
+    num_samps: '1000'
+    repeat: 'True'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 116.0]
+    rotation: 0
+    state: enabled
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: 10e3
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_SIN_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 368.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_arg_0
+  id: blocks_complex_to_arg
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1248, 280.0]
+    rotation: 0
+    state: enabled
+- name: blocks_complex_to_arg_0_0
+  id: blocks_complex_to_arg
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 584.0]
+    rotation: 180
+    state: enabled
+- name: blocks_conjugate_cc_0
+  id: blocks_conjugate_cc
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 184.0]
+    rotation: 180
+    state: enabled
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '100'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [320, 488.0]
+    rotation: 0
+    state: enabled
+- name: blocks_delay_1
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1160, 120.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_const_vxx_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '0.125'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1256, 320.0]
+    rotation: 180
+    state: enabled
+- name: blocks_multiply_const_vxx_0_0
+  id: blocks_multiply_const_vxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    const: '0.125'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 576.0]
+    rotation: 180
+    state: enabled
+- name: blocks_multiply_xx_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [160, 296.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_1
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 400.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_2
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 264.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_2_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 464.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_3_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '4'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 216.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_3_0_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [888, 248.0]
+    rotation: 0
+    state: enabled
+- name: blocks_multiply_xx_3_0_0_0
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [736, 568.0]
+    rotation: 180
+    state: enabled
+- name: blocks_multiply_xx_3_0_1
+  id: blocks_multiply_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '4'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 536.0]
+    rotation: 180
+    state: enabled
+- name: blocks_throttle_1_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate/4
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1032, 424.0]
+    rotation: 0
+    state: enabled
+- name: blocks_udp_sink_0
+  id: blocks_udp_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    eof: 'True'
+    ipaddr: 127.0.0.1
+    port: '12345'
+    psize: '1472'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [640, 636.0]
+    rotation: 0
+    state: enabled
+- name: blocks_udp_source_0
+  id: blocks_udp_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    eof: 'True'
+    ipaddr: 127.0.0.1
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    port: '12345'
+    psize: '1472'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [48, 516.0]
+    rotation: 0
+    state: enabled
+- name: blocks_vco_c_0
+  id: blocks_vco_c
+  parameters:
+    affinity: ''
+    alias: ''
+    amplitude: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate/4
+    sensitivity: -samp_rate/4
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [848, 332.0]
+    rotation: 180
+    state: enabled
+- name: blocks_vco_c_0_0
+  id: blocks_vco_c
+  parameters:
+    affinity: ''
+    alias: ''
+    amplitude: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samp_rate: samp_rate/4
+    sensitivity: '-5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [680, 468.0]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: '[sqrt(0.5), 0.5+0.5j, sqrt(0.5)*1j, -0.5+0.5j, -sqrt(0.5), -0.5-0.5j,
+      -sqrt(0.5)*1j, 0.5-0.5j]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [176, 120.0]
+    rotation: 0
+    state: enabled
+- name: digital_pfb_clock_sync_xxx_0_0
+  id: digital_pfb_clock_sync_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    filter_size: nfilts
+    init_phase: '16'
+    loop_bw: timing_bw
+    max_dev: '1.5'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    osps: '1'
+    sps: sps
+    taps: rx_taps
+    type: ccf
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [384, 248.0]
+    rotation: 0
+    state: enabled
+- name: iir_filter_xxx_0
+  id: iir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fbtaps: '[-1,0.99]'
+    fftaps: '[0.01]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    oldstyle: 'True'
+    type: ffd
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 632.0]
+    rotation: 0
+    state: enabled
+- name: iir_filter_xxx_1
+  id: iir_filter_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    fbtaps: '[-1,1]'
+    fftaps: '[1.0001,-1]'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    oldstyle: 'True'
+    type: ffd
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 480.0]
+    rotation: 0
+    state: enabled
+- name: import_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from math import pi
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [192, 8.0]
+    rotation: 0
+    state: enabled
+- name: import_0_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from gnuradio import digital
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [272, 8.0]
+    rotation: 0
+    state: enabled
+- name: import_0_0_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from gnuradio import filter
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [376, 8.0]
+    rotation: 0
+    state: enabled
+- name: import_0_0_0_0
+  id: import
+  parameters:
+    alias: ''
+    comment: ''
+    imports: from math import sqrt
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [472, 8.0]
+    rotation: 0
+    state: enabled
+- name: pfb_arb_resampler_xxx_0
+  id: pfb_arb_resampler_xxx
+  parameters:
+    affinity: ''
+    alias: ''
+    atten: '100'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nfilts: '32'
+    rrate: sps
+    samp_delay: '0'
+    taps: tx_taps
+    type: ccf
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [160, 188.0]
+    rotation: 180
+    state: enabled
+- name: qtgui_sink_x_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate/4
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'True'
+    showrf: 'False'
+    type: complex
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1208, 400.0]
+    rotation: 0
+    state: enabled
+- name: qtgui_sink_x_0_0_0
+  id: qtgui_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    bw: samp_rate/4
+    comment: ''
+    fc: '0'
+    fftsize: '1024'
+    gui_hint: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    plotconst: 'True'
+    plotfreq: 'True'
+    plottime: 'True'
+    plotwaterfall: 'True'
+    rate: '10'
+    showports: 'True'
+    showrf: 'False'
+    type: complex
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1368, 16.0]
+    rotation: 0
+    state: enabled
+
+connections:
+- [analog_random_source_x_0, '0', digital_chunks_to_symbols_xx_0, '0']
+- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
+- [blocks_complex_to_arg_0, '0', blocks_multiply_const_vxx_0, '0']
+- [blocks_complex_to_arg_0_0, '0', blocks_multiply_const_vxx_0_0, '0']
+- [blocks_conjugate_cc_0, '0', blocks_multiply_xx_2, '0']
+- [blocks_delay_0, '0', iir_filter_xxx_1, '0']
+- [blocks_delay_1, '0', blocks_conjugate_cc_0, '0']
+- [blocks_multiply_const_vxx_0, '0', blocks_vco_c_0, '0']
+- [blocks_multiply_const_vxx_0_0, '0', iir_filter_xxx_0, '0']
+- [blocks_multiply_xx_0, '0', digital_pfb_clock_sync_xxx_0_0, '0']
+- [blocks_multiply_xx_1, '0', blocks_multiply_xx_2_0, '0']
+- [blocks_multiply_xx_2, '0', blocks_complex_to_arg_0, '0']
+- [blocks_multiply_xx_2_0, '0', blocks_multiply_xx_3_0_1, '0']
+- [blocks_multiply_xx_2_0, '0', blocks_multiply_xx_3_0_1, '1']
+- [blocks_multiply_xx_2_0, '0', blocks_multiply_xx_3_0_1, '2']
+- [blocks_multiply_xx_2_0, '0', blocks_multiply_xx_3_0_1, '3']
+- [blocks_multiply_xx_2_0, '0', blocks_throttle_1_0, '0']
+- [blocks_multiply_xx_3_0, '0', blocks_multiply_xx_3_0_0, '0']
+- [blocks_multiply_xx_3_0, '0', blocks_multiply_xx_3_0_0, '1']
+- [blocks_multiply_xx_3_0_0, '0', blocks_delay_1, '0']
+- [blocks_multiply_xx_3_0_0, '0', blocks_multiply_xx_2, '1']
+- [blocks_multiply_xx_3_0_0_0, '0', blocks_complex_to_arg_0_0, '0']
+- [blocks_multiply_xx_3_0_1, '0', blocks_multiply_xx_3_0_0_0, '0']
+- [blocks_multiply_xx_3_0_1, '0', blocks_multiply_xx_3_0_0_0, '1']
+- [blocks_throttle_1_0, '0', qtgui_sink_x_0_0, '0']
+- [blocks_udp_source_0, '0', blocks_delay_0, '0']
+- [blocks_vco_c_0, '0', blocks_multiply_xx_1, '0']
+- [blocks_vco_c_0_0, '0', blocks_multiply_xx_2_0, '1']
+- [digital_chunks_to_symbols_xx_0, '0', pfb_arb_resampler_xxx_0, '0']
+- [digital_pfb_clock_sync_xxx_0_0, '0', blocks_multiply_xx_1, '1']
+- [digital_pfb_clock_sync_xxx_0_0, '0', blocks_multiply_xx_3_0, '0']
+- [digital_pfb_clock_sync_xxx_0_0, '0', blocks_multiply_xx_3_0, '1']
+- [digital_pfb_clock_sync_xxx_0_0, '0', blocks_multiply_xx_3_0, '2']
+- [digital_pfb_clock_sync_xxx_0_0, '0', blocks_multiply_xx_3_0, '3']
+- [digital_pfb_clock_sync_xxx_0_0, '0', qtgui_sink_x_0_0_0, '0']
+- [iir_filter_xxx_0, '0', blocks_udp_sink_0, '0']
+- [iir_filter_xxx_1, '0', blocks_vco_c_0_0, '0']
+- [pfb_arb_resampler_xxx_0, '0', blocks_multiply_xx_0, '0']
+
+metadata:
+  file_format: 1
